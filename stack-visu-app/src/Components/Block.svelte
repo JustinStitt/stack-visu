@@ -3,21 +3,31 @@
   export let data = 7;
   export let isStack = true;
   export let size = 400;
-  let color = Math.floor(Math.random() * 16777215).toString(16);
 
-  const checkDarkColor = (_) => {
-    if (color < 6000) {
-      color = Math.floor(Math.random() * 16777215).toString(16);
-    }
-  };
+  let colors = [
+    "#E97451",
+    "#FC80A5",
+    "#C62D42",
+    "#C9A0DC",
+    "#76D7EA",
+    "#FF8833",
+    "#29AB87",
+    "#AF593E",
+    "#01786F",
+    "#FFCBA4",
+    "#FCD667",
+    "#ED0A3F",
+    "#FBE870",
+    "#FED85D",
+  ];
 
-  $: checkDarkColor(color);
+  let color = colors[Math.floor(Math.random() * colors.length)];
 </script>
 
 <!-- start html -->
 <div
   class={isStack ? "stack" : "queue"}
-  style={`background-color: #${color}`}
+  style={`background-color: ${color}`}
   id="block"
   transition:slide
   on:click={() => {}}
@@ -32,8 +42,8 @@
   }
 
   .stack {
-    width: 300px;
-    height: 40px;
+    width: 20vw;
+    height: 5vh;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -42,8 +52,8 @@
   }
 
   .queue {
-    width: 40px;
-    height: 300px;
+    width: 20vw;
+    height: 100%;
     display: flex;
     flex-direction: column;
     align-items: center;

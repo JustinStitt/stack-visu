@@ -53,16 +53,16 @@
   </div>
   <div class="controls">
     <button class="add-block" on:click={addBlock}> Add Block </button>
-    <input
+    <!-- <input
       type="text"
       bind:value={inp}
       style="width: 15%; text-align: center"
-    />
+    /> -->
     <button on:click={popBlock}> Remove Block </button>
     <button
       on:click={() => {
         isStack = !isStack;
-      }}>Swap to Queue</button
+      }}>Swap to {isStack ? "Queue" : "Stack"}</button
     >
   </div>
 </main>
@@ -70,12 +70,15 @@
 <style>
   main {
     text-align: center;
-    max-width: 240px;
+    max-width: 100vw;
     padding: 0;
     margin: 0;
+    /* margin-left: auto;
+    margin-right: auto; */
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     justify-content: center;
+    align-items: center;
     overflow: hidden;
   }
 
@@ -84,12 +87,6 @@
     text-transform: uppercase;
     font-size: 3em;
     font-weight: 100;
-  }
-
-  @media (min-width: 640px) {
-    main {
-      max-width: none;
-    }
   }
 
   .blocks {
@@ -105,16 +102,18 @@
     width: 100%;
     height: 325px;
     overflow-y: auto;
-    border: 1px solid red;
+    /* border: 1px solid red; */
     display: flex;
     flex-direction: column-reverse;
+    align-items: center;
   }
 
   .inner-queue {
     width: 100%;
     height: 325px;
-    overflow-y: auto;
-    border: 1px solid red;
+    overflow-y: hidden;
+    overflow-x: auto;
+    /* border: 1px solid red; */
     display: flex;
     flex-direction: row;
   }
