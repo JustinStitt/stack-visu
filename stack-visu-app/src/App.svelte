@@ -12,6 +12,7 @@
   };
 
   const queuePush = () => {
+    if (blocks.length > 9) return; // too full
     // blocks = [inp, ...blocks];
     blocks = [...blocks, inp];
   };
@@ -22,7 +23,6 @@
 
   const queuePop = () => {
     blocks = blocks.slice(1, blocks.length);
-    console.log(blocks);
   };
 
   const addBlock = () => {
@@ -38,13 +38,13 @@
 </script>
 
 <main class="disable-dbl-tap-zoom">
+  {#if isStack}
+    <h1>Stack Visualization!</h1>
+  {/if}
+  {#if !isStack}
+    <h1>Queue Visualization!</h1>
+  {/if}
   <div class="blocks disable-dbl-tap-zoom">
-    {#if isStack}
-      <h1>Stack Visualization!</h1>
-    {/if}
-    {#if !isStack}
-      <h1>Queue Visualization!</h1>
-    {/if}
     <div class={isStack ? "inner-stack" : "inner-queue"}>
       {#each blocks as block, i (block)}
         <Block data={block} {isStack} />
@@ -75,9 +75,11 @@
 <style>
   main {
     text-align: center;
-    max-width: 100vw;
+    max-width: 90vw;
+    height: 85vh;
     padding: 0;
-    margin: 0;
+    margin-left: auto;
+    margin-right: auto;
     /* margin-left: auto;
     margin-right: auto; */
     display: flex;
@@ -92,35 +94,42 @@
     text-transform: uppercase;
     font-size: 3em;
     font-weight: 100;
+    background-color: #424242;
   }
 
   .blocks {
+    max-width: 85vw;
+    width: 90vw;
+    max-height: 85vh;
+    height: 100%;
     display: flex;
     flex-direction: column;
     justify-content: flex-end;
     align-items: flex-end;
     background-color: #333;
-    max-width: 500px;
+    margin-bottom: 20px;
   }
 
   .inner-stack {
     width: 100%;
-    height: 325px;
+    height: 100%;
+    max-height: 60vh;
     overflow-y: auto;
     /* border: 1px solid red; */
     display: flex;
     flex-direction: column-reverse;
     align-items: center;
   }
-
   .inner-queue {
     width: 100%;
-    height: 325px;
+    height: 100%;
+    max-height: 60vh;
     overflow-y: hidden;
     overflow-x: auto;
     /* border: 1px solid red; */
     display: flex;
     flex-direction: row;
+    background-color: rebeccapurple;
   }
 
   .disable-dbl-tap-zoom {

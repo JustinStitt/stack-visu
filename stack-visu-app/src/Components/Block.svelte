@@ -42,7 +42,7 @@
   }
 
   .stack {
-    width: 20vw;
+    width: 30vw;
     height: 5vh;
     display: flex;
     flex-direction: column;
@@ -52,13 +52,14 @@
   }
 
   .queue {
-    width: 20vw;
+    width: 10%;
     height: 100%;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
     border: 1.5px solid aliceblue;
+    overflow: hidden;
   }
 
   div:hover {
