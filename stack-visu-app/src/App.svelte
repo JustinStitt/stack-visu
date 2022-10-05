@@ -129,7 +129,6 @@
     /* border: 1px solid red; */
     display: flex;
     flex-direction: row;
-    background-color: rebeccapurple;
   }
 
   .disable-dbl-tap-zoom {
