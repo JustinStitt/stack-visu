@@ -37,8 +37,8 @@
   };
 </script>
 
-<main>
-  <div class="blocks">
+<main class="disable-dbl-tap-zoom">
+  <div class="blocks disable-dbl-tap-zoom">
     {#if isStack}
       <h1>Stack Visualization!</h1>
     {/if}
@@ -52,14 +52,19 @@
     </div>
   </div>
   <div class="controls">
-    <button class="add-block" on:click={addBlock}> Add Block </button>
+    <button class="add-block disable-dbl-tap-zoom" on:click={addBlock}>
+      Add Block
+    </button>
     <!-- <input
       type="text"
       bind:value={inp}
       style="width: 15%; text-align: center"
     /> -->
-    <button on:click={popBlock}> Remove Block </button>
+    <button class="disable-dbl-tap-zoom" on:click={popBlock}>
+      Remove Block
+    </button>
     <button
+      class="disable-dbl-tap-zoom"
       on:click={() => {
         isStack = !isStack;
       }}>Swap to {isStack ? "Queue" : "Stack"}</button
@@ -116,5 +121,9 @@
     /* border: 1px solid red; */
     display: flex;
     flex-direction: row;
+  }
+
+  .disable-dbl-tap-zoom {
+    touch-action: manipulation;
   }
 </style>
